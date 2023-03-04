@@ -15,15 +15,15 @@ peopleFileXml = open('SwapiPeople.xml','w')
 peopleObj = json.load(peopleFileJson)
 
 #creating a destination dictionary object with a single root to match XML structure
-poepleResult={'People':{}}
+peopleResult={'People':{}}
 
 #Cleaning up some of the extra json data 
 for p in peopleObj['results']:
     #converting the name data into a key to match XML structure.
     name=p.pop('name')
-    poepleResult['People'][f'{name}']=p
+    peopleResult['People'][f'{name}']=p
 
 
 #writing to XML file.
-peopleFileXml.write(xmltodict.unparse(poepleResult,pretty=True))
+peopleFileXml.write(xmltodict.unparse(peopleResult,pretty=True))
 peopleFileXml.close
